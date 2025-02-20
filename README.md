@@ -5,3 +5,5 @@
 ## from the talkpython.fm course
 
 ### Python for absolute beginners
+
+Github repo <https://github.com/talkpython/python-for-absolute-beginners-course/>
