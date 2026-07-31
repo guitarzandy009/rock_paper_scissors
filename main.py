@@ -11,26 +11,45 @@ def show_header():
     print("---------------------------------")  
 
 def play_game(player_1, player_2):
+    rounds = 3
+    wins_p1 = 0
+    wins_p2 = 0
+
     rolls = ['rock', 'paper', 'scissors']
 
-    roll1 = get_roll(player_1, rolls)
-    roll2 = random.choice(rolls)
+    while wins_p1 < rounds and wins_p2 < rounds:
 
-    if not roll1:
-        print("Can't play that, exiting") 
-        return
+        roll1 = get_roll(player_1, rolls)
+        roll2 = random.choice(rolls)
 
-    print(f"{player_1} rolls {roll1}")
-    print(f"{player_2} rolls {roll2}")
+        if not roll1:
+            print("Can't play that, try again!") 
+            continue
 
-    winner = check_for_winning_throw(player_1, player_2, roll1, roll2)
+        print(f"{player_1} rolls {roll1}")
+        print(f"{player_2} rolls {roll2}")
+
+        winner = check_for_winning_throw(player_1, player_2, roll1, roll2)
 
 
-    print("The game is over!")
-    if winner is None:
-        print("It was a tie!")
+        if winner is None:
+            print("This round  was a tie!")
+        else:
+            print(f'{winner} takes the round!')
+            if winner == player_1:
+                wins_p1 += 1
+            elif winner == player_2:
+                wins_p2 += 1
+
+        print(f"Score is {player_1}: {wins_p1} and {player_2}: {wins_p2}")
+        print()
+
+    if wins_p1 >= rounds:
+        overall_winner = player_1
     else:
-        print(f'{winner} takes the game!')
+        overall_winner = player_2
+
+    print(f"{overall_winner} wins the game!")
 
 def check_for_winning_throw(player_1, player_2, roll1, roll2):
     # Rock
