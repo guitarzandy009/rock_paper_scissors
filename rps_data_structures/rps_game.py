@@ -1,5 +1,21 @@
 import random
 
+rolls = {
+    'rock': {
+        'defeats': ['scissors'],
+        'defeated_by': ['paper']
+    },
+    'paper': {
+        'defeats': ['rock'],
+        'defeated_by': ['scissors']        
+    },
+    'scissors': {
+        'defeats': ['paper'],
+        'defeated_by': ['rock']
+    }
+}
+
+
 def main():
     show_header()
     play_game("You", "Robot")
@@ -72,21 +88,7 @@ def check_for_winning_throw(player_1, player_2, roll1, roll2):
 
     if roll1 == roll2:
         print("The play was tied!")
-    elif roll1 == 'rock':
-        if roll2 == 'paper':
-            winner = player_2
-        elif roll2 == 'scissors':
-            winner = player_1 
-    elif roll1 == 'paper':
-        if roll2 == 'scissors':
-            winner = player_2
-        elif roll2 == 'rock':
-            winner = player_1
-    elif roll1 == 'scissors':
-        if roll2 == 'rock':
-            winner = player_2
-        elif roll2 == 'paper':
-            winner = player_1
+
     return winner
 
 
