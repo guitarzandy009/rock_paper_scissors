@@ -32,12 +32,12 @@ def play_game(player_1, player_2):
     wins_p1 = 0
     wins_p2 = 0
 
-    rolls = ['rock', 'paper', 'scissors']
+    roll_names = list(rolls.keys())
 
     while wins_p1 < rounds and wins_p2 < rounds:
 
-        roll1 = get_roll(player_1, rolls)
-        roll2 = random.choice(rolls)
+        roll1 = get_roll(player_1, roll_names)
+        roll2 = random.choice(roll_names)
 
         if not roll1:
             print("Can't play that, try again!") 
@@ -69,34 +69,23 @@ def play_game(player_1, player_2):
     print(f"{overall_winner} wins the game!")
 
 def check_for_winning_throw(player_1, player_2, roll1, roll2):
-    # Rock
-    #   Rock -> tie
-    #   Paper -> lose
-    #   Scissors -> win
-
-    # Paper
-    #   Rock -> win
-    #   Paper -> tie
-    #   Scissors -> lose
-
-    # Scissors
-    #   Rock -> lose
-    #   Paper -> win
-    #   Scissors -> tie
-
     winner = None
-
     if roll1 == roll2:
         print("The play was tied!")
+
+    outcome = rolls.get(roll1, {})
+    if roll2 in outcome.get('defeats'):
+        return player_1
+    elif roll2 in outcome.get('defeated_by'):
+        return player_2
 
     return winner
 
 
-def get_roll(player_name, rolls):
+def get_roll(player_name, roll_names):
     print("Available rolls:")
-    for index, r in enumerate(rolls, start=1):
+    for index, r in enumerate(roll_names, start=1):
         print(f"{index}. {r}")
-        index += 1
 
     text = input(f"{player_name}, what is your roll? ")
     selected_index = int(text) - 1
@@ -105,7 +94,7 @@ def get_roll(player_name, rolls):
         print(f"Sorry {player_name}, {text} is out of bounds!")
         return None
 
-    return rolls[selected_index]
+    return roll_names[selected_index]
 
 if __name__ == '__main__':
     main()
