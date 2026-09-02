@@ -2,7 +2,7 @@ import random
 import json
 
 rolls = {
-    "NOTHING": "HERE"
+    "NOTHING": "HERE" 
 }
 
 
