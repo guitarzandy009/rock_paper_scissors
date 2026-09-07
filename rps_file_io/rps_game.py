@@ -95,11 +95,14 @@ def load_rolls():
 
     filename = 'rolls.json'
 
-    fin = open(filename, 'r', encoding='utf-8')
-    rolls = json.load(fin)
-    fin.close()
+    # fin = open(filename, 'r', encoding='utf-8')
+    # rolls = json.load(fin)
+    # fin.close()
 
-    print(f"Loaded rolls: {str(rolls.keys())}")
+    with open(filename, 'r', encoding='utf-8') as fin:
+        rolls = json.load(fin)    
+
+    print(f"Loaded rolls: {list(rolls.keys())}")
 
 if __name__ == '__main__':
     main()
