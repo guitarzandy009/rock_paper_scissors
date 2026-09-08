@@ -1,5 +1,7 @@
 import random
 import json
+import os
+
 
 rolls = {
     "NOTHING": "HERE" 
@@ -93,7 +95,14 @@ def get_roll(player_name, roll_names):
 def load_rolls():
     global rolls
 
-    filename = 'rolls.json'
+    directory = os.path.dirname(__file__)
+    # print(directory)
+
+    # local_file = __file__
+    # print(local_file)
+
+    filename = os.path.join(directory, 'rolls.json')
+    # print(filename)
 
     # fin = open(filename, 'r', encoding='utf-8')
     # rolls = json.load(fin)
