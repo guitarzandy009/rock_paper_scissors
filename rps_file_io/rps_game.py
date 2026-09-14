@@ -11,6 +11,7 @@ rolls = {
 def main():
     load_rolls()
     show_header()
+    show_leaderboard()
     player_1, player_2 = get_players()
     play_game(player_1, player_2)
 
@@ -25,6 +26,22 @@ def get_players():
     p1 = input("Player 1, what is your name? ")
     p2 = "Computer"
     return p1, p2
+
+def show_leaderboard():
+    leaders = load_leaders()
+
+    sorted_leaders = list(leaders.items())
+    sorted_leaders.sort(key=lambda l: l[1], reverse=True)
+
+    print()
+    print("--------------------------------")
+    print()
+    print("LEADERS")
+    for name, wins in sorted_leaders[0:5]:
+        print(f"{wins:,} -- {name}")
+    print()
+    print("--------------------------------")
+    print()
 
 
 def play_game(player_1, player_2):
