@@ -9,12 +9,15 @@ rolls = {
 
 
 def main():
+    log("App starting up....")
+
     load_rolls()
     show_header()
     show_leaderboard()
     player_1, player_2 = get_players()
+    log(f"{player_1} has logged in.")
     play_game(player_1, player_2)
-
+    log("Game over")
 
 def show_header():
     print("----------------------------------")  
@@ -45,8 +48,8 @@ def show_leaderboard():
 
 
 def play_game(player_1, player_2):
+    log(f"New game starting between {player_1} and {player_2}.")
     wins = {player_1: 0, player_2: 0 }
-
     roll_names = list(rolls.keys())
 
     while not find_winner(wins, wins.keys()):
@@ -57,6 +60,7 @@ def play_game(player_1, player_2):
             print("Can't play that, try again!") 
             continue
 
+        log(f"Round: {player_1} roll {roll1} and {player_2} rolls {roll2}")
         print(f"{player_1} rolls {roll1}")
         print(f"{player_2} rolls {roll2}")
 
@@ -65,19 +69,28 @@ def play_game(player_1, player_2):
 
 
         if winner is None:
-            print("This round  was a tie!")
+            msg = "This round  was a tie!"
+            print(msg)
+            log(msg)
+
         else:
-            print(f'{winner} takes the round!')
+            msg = f'{winner} takes the round!'
+            print(msg)
+            log(msg)
             wins[winner]+= 1
 
         # print(f"Current win status: {wins}")
 
 
-        print(f"Score is {player_1}: {wins[player_1]} and {player_2}: {wins[player_2]}")
+        msg = f"Score is {player_1}: {wins[player_1]} and {player_2}: {wins[player_2]}"
+        print(msg)
+        log(msg)
         print()
 
     overall_winner = find_winner(wins, wins.keys())
-    print(f"{overall_winner} wins the game!")
+    msg = f"{overall_winner} wins the game!"
+    print(msg)
+    log(msg)
     record_win(overall_winner)
 
 def find_winner(wins, names):
@@ -136,7 +149,7 @@ def load_rolls():
     with open(filename, 'r', encoding='utf-8') as fin:
         rolls = json.load(fin)    
 
-    print(f"Loaded rolls: {list(rolls.keys())}")
+    log(f"Loaded rolls: {list(rolls.keys())} from {os.path.basename(filename)}.")
 
 def load_leaders():
     directory = os.path.dirname(__file__)
@@ -161,6 +174,9 @@ def record_win(winner_name):
 
     with open(filename, 'w', encoding='utf-8') as fout:
         json.dump(leaders, fout)
+
+def log(msg):
+    print("NOT REALLY: " + msg)
 
 if __name__ == '__main__':
     main()
