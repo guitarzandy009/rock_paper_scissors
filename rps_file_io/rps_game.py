@@ -1,7 +1,7 @@
 import random
 import json
 import os
-
+import datetime
 
 rolls = {
     "NOTHING": "HERE" 
@@ -176,7 +176,13 @@ def record_win(winner_name):
         json.dump(leaders, fout)
 
 def log(msg):
-    print("NOT REALLY: " + msg)
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, 'rps.log')
+
+    with open(filename, 'a', encoding='utf-8') as fout:
+        fout.write(f"[{datetime.datetime.now().date().isoformat()}]")
+        fout.write(msg)
+        fout.write('\n')
 
 if __name__ == '__main__':
     main()

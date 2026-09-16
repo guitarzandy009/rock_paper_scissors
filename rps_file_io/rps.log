@@ -1,0 +1,44 @@
+App starting up....
+Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] from rolls.json.
+Andy has logged in.
+New game starting between Andy and Computer.
+Round: Andy roll rock and Computer rolls water
+Computer takes the round!
+Score is Andy: 0 and Computer: 1
+Round: Andy roll rock and Computer rolls fire
+Andy takes the round!
+Score is Andy: 1 and Computer: 1
+Round: Andy roll scissors and Computer rolls air
+Andy takes the round!
+Score is Andy: 2 and Computer: 1
+Round: Andy roll fire and Computer rolls air
+Computer takes the round!
+Score is Andy: 2 and Computer: 2
+Round: Andy roll rock and Computer rolls scissors
+Andy takes the round!
+Score is Andy: 3 and Computer: 2
+Andy wins the game!
+Game over
+App starting up....
+Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] from rolls.json.
+[2026-09-16]App starting up....
+[2026-09-16]Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] from rolls.json.
+[2026-09-16]Bob has logged in.
+[2026-09-16]New game starting between Bob and Computer.
+[2026-09-16]Round: Bob roll rock and Computer rolls fire
+[2026-09-16]Bob takes the round!
+[2026-09-16]Score is Bob: 1 and Computer: 0
+[2026-09-16]Round: Bob roll fire and Computer rolls sponge
+[2026-09-16]Bob takes the round!
+[2026-09-16]Score is Bob: 2 and Computer: 0
+[2026-09-16]Round: Bob roll sponge and Computer rolls rock
+[2026-09-16]Computer takes the round!
+[2026-09-16]Score is Bob: 2 and Computer: 1
+[2026-09-16]Round: Bob roll fire and Computer rolls fire
+[2026-09-16]This round  was a tie!
+[2026-09-16]Score is Bob: 2 and Computer: 1
+[2026-09-16]Round: Bob roll rock and Computer rolls sponge
+[2026-09-16]Bob takes the round!
+[2026-09-16]Score is Bob: 3 and Computer: 1
+[2026-09-16]Bob wins the game!
+[2026-09-16]Game over
