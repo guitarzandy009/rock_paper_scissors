@@ -2,13 +2,13 @@ import random
 import json
 import os
 import datetime
+from colorama import Fore
 
-rolls = {
-    "NOTHING": "HERE" 
-}
+rolls = {}
 
 
 def main():
+    print(Fore.WHITE)
     log("App starting up....")
 
     load_rolls()
@@ -20,10 +20,12 @@ def main():
     log("Game over")
 
 def show_header():
+    print(Fore.LIGHTMAGENTA_EX)
     print("----------------------------------")  
-    print("-----Rock, Paper, Scissors v2-----")  
-    print("-----Data Structures Edition------")  
+    print("-----Extended Rock, Paper, Scissors-----")  
+    print("-----External Libraries Edition------")  
     print("----------------------------------")  
+    print(Fore.WHITE)
 
 def get_players():
     p1 = input("Player 1, what is your name? ")
@@ -57,12 +59,14 @@ def play_game(player_1, player_2):
         roll2 = random.choice(roll_names)
 
         if not roll1:
-            print("Can't play that, try again!") 
+            print(Fore.LIGHTRED_EX + "Can't play that, try again!")
+            print(Fore.WHITE) 
             continue
 
         log(f"Round: {player_1} roll {roll1} and {player_2} rolls {roll2}")
-        print(f"{player_1} rolls {roll1}")
-        print(f"{player_2} rolls {roll2}")
+        print(Fore.YELLOW + f"{player_1} rolls {roll1}")
+        print(Fore.LIGHTBLUE_EX + f"{player_2} rolls {roll2}")
+        print(Fore.WHITE)
 
 
         winner = check_for_winning_throw(player_1, player_2, roll1, roll2)
@@ -75,7 +79,8 @@ def play_game(player_1, player_2):
 
         else:
             msg = f'{winner} takes the round!'
-            print(msg)
+            fore = Fore.GREEN if winner == player_1 else Fore.LIGHTRED_EX
+            print(fore + msg + Fore.WHITE)
             log(msg)
             wins[winner]+= 1
 
@@ -88,6 +93,7 @@ def play_game(player_1, player_2):
         print()
 
     overall_winner = find_winner(wins, wins.keys())
+    fore = Fore.GREEN if overall_winner == player_1 else Fore.LIGHTRED_EX
     msg = f"{overall_winner} wins the game!"
     print(msg)
     log(msg)
@@ -125,7 +131,8 @@ def get_roll(player_name, roll_names):
     selected_index = int(text) - 1
 
     if selected_index < 0 or selected_index >= len(rolls):
-        print(f"Sorry {player_name}, {text} is out of bounds!")
+        print(Fore.LIGHTRED_EX + f"Sorry {player_name}, {text} is out of bounds!")
+        print(Fore.WHITE)
         return None
 
     return roll_names[selected_index]
