@@ -3,6 +3,8 @@ import json
 import os
 import datetime
 from colorama import Fore
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
 
 rolls = {}
 
@@ -95,7 +97,7 @@ def play_game(player_1, player_2):
     overall_winner = find_winner(wins, wins.keys())
     fore = Fore.GREEN if overall_winner == player_1 else Fore.LIGHTRED_EX
     msg = f"{overall_winner} wins the game!"
-    print(msg)
+    print(fore + msg + Fore.WHITE)
     log(msg)
     record_win(overall_winner)
 
@@ -123,19 +125,37 @@ def check_for_winning_throw(player_1, player_2, roll1, roll2):
 
 
 def get_roll(player_name, roll_names):
-    print("Available rolls:")
-    for index, r in enumerate(roll_names, start=1):
-        print(f"{index}. {r}")
+    print(f"Available rolls: {', '.join(roll_names)}")
+    # for index, r in enumerate(roll_names, start=1):
+        # print(f"{index}. {r}")
 
-    text = input(f"{player_name}, what is your roll? ")
-    selected_index = int(text) - 1
+    # text = input(f"{player_name}, what is your roll? ")
+    # selected_index = int(text) - 1
 
-    if selected_index < 0 or selected_index >= len(rolls):
-        print(Fore.LIGHTRED_EX + f"Sorry {player_name}, {text} is out of bounds!")
+    word_comp = WordCompleter(roll_names)
+    roll = prompt(f"{player_name}, what is your roll?: ", completer=word_comp)
+
+    if not roll or roll not in roll_names:
+        print(Fore.LIGHTRED_EX + f"Sorry {player_name}, {roll} is not valid!")
         print(Fore.WHITE)
         return None
 
-    return roll_names[selected_index]
+    return roll
+
+# def get_roll(player_name, roll_names):
+#     print("Available rolls:")
+#     for index, r in enumerate(roll_names, start=1):
+#         print(f"{index}. {r}")
+
+#     text = input(f"{player_name}, what is your roll? ")
+#     selected_index = int(text) - 1
+
+#     if selected_index < 0 or selected_index >= len(rolls):
+#         print(Fore.LIGHTRED_EX + f"Sorry {player_name}, {text} is out of bounds!")
+#         print(Fore.WHITE)
+#         return None
+
+#     return roll_names[selected_index]
 
 def load_rolls():
     global rolls
