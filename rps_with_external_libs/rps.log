@@ -197,3 +197,39 @@ Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] fr
 [2026-09-28]Score is Aleister: 0 and Computer: 3
 [2026-09-28]Computer wins the game!
 [2026-09-28]Game over
+[2026-09-29]App starting up....
+[2026-09-29]Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] from rolls.json.
+[2026-09-29]Bob has logged in.
+[2026-09-29]New game starting between Bob and Computer.
+[2026-09-30]App starting up....
+[2026-09-30]Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] from rolls.json.
+[2026-09-30]Aleister has logged in.
+[2026-09-30]New game starting between Aleister and Computer.
+[2026-09-30]App starting up....
+[2026-09-30]Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] from rolls.json.
+[2026-09-30]Aleister has logged in.
+[2026-09-30]New game starting between Aleister and Computer.
+[2026-09-30]Round: Aleister roll air and Computer rolls water
+[2026-09-30]Aleister takes the round!
+[2026-09-30]Score is Aleister: 1 and Computer: 0
+[2026-09-30]Round: Aleister roll rock and Computer rolls paper
+[2026-09-30]Computer takes the round!
+[2026-09-30]Score is Aleister: 1 and Computer: 1
+[2026-09-30]Round: Aleister roll fire and Computer rolls fire
+[2026-09-30]This round  was a tie!
+[2026-09-30]Score is Aleister: 1 and Computer: 1
+[2026-09-30]Round: Aleister roll sponge and Computer rolls paper
+[2026-09-30]Aleister takes the round!
+[2026-09-30]Score is Aleister: 2 and Computer: 1
+[2026-09-30]Round: Aleister roll water and Computer rolls paper
+[2026-09-30]Computer takes the round!
+[2026-09-30]Score is Aleister: 2 and Computer: 2
+[2026-09-30]Round: Aleister roll rock and Computer rolls paper
+[2026-09-30]Computer takes the round!
+[2026-09-30]Score is Aleister: 2 and Computer: 3
+[2026-09-30]Computer wins the game!
+[2026-09-30]Game over
+[2026-09-30]App starting up....
+[2026-09-30]Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water'] from rolls.json.
+[2026-09-30]Bob has logged in.
+[2026-09-30]New game starting between Bob and Computer.

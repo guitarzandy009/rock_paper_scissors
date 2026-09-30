@@ -4,7 +4,7 @@ import os
 import datetime
 from colorama import Fore
 from prompt_toolkit import prompt
-from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.completion import Completer, Completion, WordCompleter
 
 rolls = {}
 
@@ -132,7 +132,9 @@ def get_roll(player_name, roll_names):
     # text = input(f"{player_name}, what is your roll? ")
     # selected_index = int(text) - 1
 
-    word_comp = WordCompleter(roll_names)
+    # word_comp = WordCompleter(roll_names)
+    word_comp = PlayComplete()
+
     roll = prompt(f"{player_name}, what is your roll?: ", completer=word_comp)
 
     if not roll or roll not in roll_names:
@@ -210,6 +212,30 @@ def log(msg):
         fout.write(f"[{datetime.datetime.now().date().isoformat()}]")
         fout.write(msg)
         fout.write('\n')
+
+class PlayComplete(Completer):
+
+    def get_completions(self, document, complete_event):
+        roll_names = list(rolls.keys())
+        word = document.get_word_before_cursor()
+        complete_all = not word if not word.strip() else word == '.'
+        completions = []
+
+        for roll in roll_names:
+            is_substring = word in roll
+            if complete_all or is_substring:
+
+                
+                completion = Completion(roll, 
+                               start_position=-len(word),
+                               style="fg:white bg:darkgreen",
+                               selected_style="fg:yellow bg:green"
+                               )
+                completions.append(completion)
+                    
+
+        return completions
+
 
 if __name__ == '__main__':
     main()
